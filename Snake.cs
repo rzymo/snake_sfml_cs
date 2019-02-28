@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,10 +14,10 @@ namespace snake_sfml_cs
     {
         int dir;
 
-        List<Vector2i> s = new List<Vector2i>();
+        List<Vector2i> s = new List<Vector2i> { };
 
-        Sprite head = new Sprite();
-        Sprite segm = new Sprite();
+        Sprite head;
+        Sprite segm;
         Sound  sound;
 
         void Drawable.Draw(RenderTarget target, RenderStates states)
@@ -53,26 +53,17 @@ namespace snake_sfml_cs
         public void Move()
         {
             for (int i = s.Count-1; i > 0;  i--)
-            {
-                s.Insert(i, s[i-1]);
-                s.RemoveAt(i+1);
-            }
+                s[i] = s[i - 1];
 
-            Vector2i tmp = new Vector2i(s[0].X,s[0].Y);
-            if (dir == 0) tmp.Y += 1;
-            if (dir == 1) tmp.X -= 1;
-            if (dir == 2) tmp.X += 1;
-            if (dir == 3) tmp.Y -= 1;
-            s.Insert(0, tmp);
-            s.RemoveAt(1);
+            if (dir == 0) s[0] = new Vector2i(s[0].X, s[0].Y+1);
+            if (dir == 1) s[0] = new Vector2i(s[0].X-1, s[0].Y);
+            if (dir == 2) s[0] = new Vector2i(s[0].X+1, s[0].Y);
+            if (dir == 3) s[0] = new Vector2i(s[0].X, s[0].Y-1);
 
-            tmp = new Vector2i(s[0].X, s[0].Y);
-            if (tmp.X > World.X - 1) tmp.X = 0;
-            if (tmp.X < 0) tmp.X = Convert.ToInt32(World.X) - 1;
-            if (tmp.Y > World.Y - 1) tmp.Y = 0;
-            if (tmp.Y < 0) tmp.Y = Convert.ToInt32(World.Y) - 1;
-            s.Insert(0, tmp);
-            s.RemoveAt(1);
+            if (s[0].X > World.X - 1) s[0] = new Vector2i(0, s[0].Y);
+            if (s[0].X < 0) s[0] = new Vector2i(Convert.ToInt32(World.X) - 1, s[0].Y);
+            if (s[0].Y > World.Y - 1) s[0] = new Vector2i(s[0].X, 0);
+            if (s[0].Y < 0) s[0] = new Vector2i(s[0].X, Convert.ToInt32(World.Y) - 1);
 
             for (int i = 1; i < s.Count; i++)
             {
