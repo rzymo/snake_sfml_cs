@@ -9,7 +9,7 @@ using SFML.System;
 
 namespace snake_sfml_cs
 {
-    class Fruit : Drawable
+    class Fruit : World, Drawable
     {
         const uint NUM = 5;
         Vector2i pos;
@@ -46,7 +46,7 @@ namespace snake_sfml_cs
             pos.Y = rnd.Next(Convert.ToInt32(World.Y));
 
             sprite[0] = new Sprite(new Texture(sprite[rnd.Next(1, Convert.ToInt32(NUM) + 1)].Texture));
-            sprite[0].Position = new Vector2f(pos.X * World.brickSize, pos.Y * World.brickSize);
+            sprite[0].Position = new Vector2f(pos.X * brickSize, pos.Y * brickSize);
         }
 
         public Vector2i GetXY()

@@ -8,7 +8,7 @@ using SFML.System;
 
 namespace snake_sfml_cs
 {
-    class StatusBar : Drawable
+    class StatusBar : World, Drawable
     {
         Text textPts;
         Sprite sprite;
@@ -17,7 +17,7 @@ namespace snake_sfml_cs
         {
             for (int i = 0; i < World.X; i++)
             {
-                sprite.Position = new Vector2f(i * World.brickSize, World.Y * World.brickSize);
+                sprite.Position = new Vector2f(i * brickSize, World.Y * brickSize);
                 target.Draw(sprite, states);
             }
             target.Draw(textPts, states);
@@ -32,7 +32,7 @@ namespace snake_sfml_cs
                 Font = new Font("res\\arial.ttf"),
                 CharacterSize = 13,
                 FillColor = Color.Black,
-                Position = new Vector2f(5.0f, World.Y * World.brickSize + 3)
+                Position = new Vector2f(5.0f, World.Y * brickSize + 3)
             };
         }
 
@@ -40,6 +40,5 @@ namespace snake_sfml_cs
         {
             textPts.DisplayedString = "POINTS: " + pts;
         }
-
     }
 }

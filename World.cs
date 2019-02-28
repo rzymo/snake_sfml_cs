@@ -12,8 +12,8 @@ namespace snake_sfml_cs
 {
     class World : Drawable
     {
-        static public uint brickSize;
-        static public uint X, Y;
+        static protected uint brickSize;
+        static protected uint X, Y;
 
         Sprite brick;
         Music music;
@@ -31,6 +31,7 @@ namespace snake_sfml_cs
                 }
         }
 
+        public World() {}
         public World(uint x, uint y, uint _brickSize)
         {
             X = x;
