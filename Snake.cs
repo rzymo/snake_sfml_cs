@@ -37,10 +37,7 @@ namespace snake_sfml_cs
             dir = 0;
 
             for (int i = 0; i < 3; i++)
-            {
-                Vector2i tmp = new Vector2i(5, 5-i);
-                s.Add(tmp);
-            }
+                s.Add(new Vector2i(5, 5-i));
 
             head  = new Sprite(new Texture("res\\head.png"));
             segm  = new Sprite(new Texture("res\\segm.png"));
