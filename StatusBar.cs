@@ -17,7 +17,7 @@ namespace snake_sfml_cs
         {
             for (int i = 0; i < World.X; i++)
             {
-                sprite.Position = new Vector2f(i * brickSize, World.Y * brickSize);
+                sprite.Position = new Vector2f(i * brickSize, Y * brickSize);
                 target.Draw(sprite, states);
             }
             target.Draw(textPts, states);
@@ -32,7 +32,7 @@ namespace snake_sfml_cs
                 Font = new Font("res\\arial.ttf"),
                 CharacterSize = 13,
                 FillColor = Color.Black,
-                Position = new Vector2f(5.0f, World.Y * brickSize + 3)
+                Position = new Vector2f(5.0f, Y * brickSize + 3)
             };
         }
 
